@@ -21,7 +21,8 @@ Make a POST request to the /predict endpoint with the necessary payload in HF fo
 
 ## Example payload:
 
-'''{
+'''
+{
   "hf_pipeline": "zero-shot-classification",
   "model_URL": "https://your-model-url.com",
   "input": "Your input text",
@@ -29,8 +30,5 @@ Make a POST request to the /predict endpoint with the necessary payload in HF fo
     "param1": "value1",
     "param2": "value2"
   }
-}'''
-
-Note: Ensure the values are replaced with the actual data.
-
-The service will convert the payload to v2 Inference Protocol API format and
+}
+'''
