@@ -7,10 +7,9 @@ def is_valid_url(url):
     regex_pattern = r"^(http|https|ftp)://[^\s/$.?#].[^\s]*$"
     return re.match(regex_pattern, url) is not None
 
+# TODO: Validate Input for avoiding errors due incorrect input or format being followed
 
 def zero_shot_classification(input_hf):
-    #Validate input_hf
-
     #Convert to V2_input 
     v2_input = {
         'inputs': [
@@ -33,7 +32,6 @@ def zero_shot_classification(input_hf):
         ]
     }
     #Additional parameters
-
     # multi_label
     if('multi_lasbel' in input_hf['parameters']):
         v2_input['inputs'].append(
@@ -75,8 +73,6 @@ def zero_shot_classification(input_hf):
 
 
 def token_classification(input_hf):
-    #Validate input_hf
-
     #Convert to V2_input 
     v2_input = {
         'inputs': [
@@ -100,8 +96,6 @@ def token_classification(input_hf):
 
 
 def text_generation(input_hf):
-    #Validate input_hf
-
     #Convert to V2_input 
     v2_input = {
     "inputs": [
@@ -235,5 +229,5 @@ async def predict(payload: PredictionRequest):
     async with httpx.AsyncClient() as client:
         timeout = httpx.Timeout(40.0, read=None)
         response = await client.post(URL, json=v2_inp, timeout=timeout)
-    v2_output = response
-    return v2_output.json()
+    v2_output = response.json()
+    return v2_output
