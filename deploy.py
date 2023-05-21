@@ -1,3 +1,4 @@
+# This file is only used to deploy the app.py (API) on TrueFoundry's internal server
 import argparse
 import logging
 from servicefoundry import Build, PythonBuild, Service, Resources, Port
@@ -19,9 +20,10 @@ service = Service(
     ports=[
         Port(
             port=8000,
-            host="fastapi-intern-nanda-8000.demo1.truefoundry.com"
+            host="" # endpoint should be configured according to the domain provided
         )
     ],
+    # Resource allocation in server
     resources=Resources(
         cpu_request=0.1,
         cpu_limit=0.1,
